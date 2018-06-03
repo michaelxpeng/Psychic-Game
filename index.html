@@ -11,14 +11,36 @@
     <!-- Have computer make a choice
     Have the user make a choice
     Capture the choices
-    Compare the choices, and determine whether it's a win, loss, or tie
+    Compare the choices, and determine whether the win, loss or guess counter goes up or down
     Display the results to the user -->
     
     
     <script type = "text/javascript">
-    
-    
-    
+
+        var alphabet = ("abcdefghijklmnopqrstuvwxyz").split("");
+        var winCounter = 0;
+        var lossCounter = 0;
+        var guessCounter = 9;
+
+        document.onkeyup = function() {
+            var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+            console.log(userGuess);
+
+            var computerChoice = alphabet[Math.floor(Math.random()*alphabet.length)];
+            console.log(computerChoice);
+
+            if (userGuess === computerChoice) {
+                winCounter++;
+            }
+            else (userGuess !== computerChoice) {
+                guessCounter--;
+            }
+
+            if (guessCounter === 0) {
+                lossCounter++;
+            }
+
+        }
     
     </script>
 </body>
