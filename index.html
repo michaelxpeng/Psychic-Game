@@ -7,20 +7,15 @@
     <title>Psychic Game</title>
 </head>
 <body>
-
     <h1>The Psychic Game</h1>
-    <p>Guess what letter I'm thinking of</p>
-    <p>Wins: </p>
-    <p>Losses: </p>
-    <p>Guesses left: </p>
-    <p>Your guesses so far: </p>
 
-    <!-- Have computer make a choice
-    Have the user make a choice
-    Capture the choices
-    Compare the choices, and determine whether the win, loss or guess counter goes up or down
-    Display the results to the user -->
-    
+    <div id = "game">
+        <p>Guess what letter I'm thinking of</p>
+        <p>Wins: 0</p>
+        <p>Losses: 0</p>
+        <p>Guesses left: 9</p>
+        <p>Your guesses so far: </p>
+    </div>
     
     <script type = "text/javascript">
 
@@ -30,26 +25,39 @@
         var guessCounter = 9;
 
         document.onkeyup = function() {
-            var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-            console.log(userGuess);
-
             var computerChoice = alphabet[Math.floor(Math.random()*alphabet.length)];
             console.log(computerChoice);
 
+            var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+            console.log(userGuess);
+
             if (userGuess === computerChoice) {
                 winCounter++;
+                console.log(winCounter);
             }
-            else (userGuess !== computerChoice) {
+            
+            else if (userGuess !== computerChoice) {
                 guessCounter--;
-                //prints the incorrect guess//
+                console.log(guessCounter);
             }
-
             if (guessCounter === 0) {
                 lossCounter++;
+                guessCounter = 9;
+                console.log(lossCounter);
+                console.log(guessCounter);
+                return;
             }
+            
+            
+            var html = "<p>Guess what letter I'm thinking of</p>" + 
+            "<p>Wins: " + winCounter + "</p>" + 
+            "<p>Losses: " + lossCounter + "</p>" + 
+            "<p>Guesses left: " + guessCounter + "</p>" +
+            "<p>Your guesses so far: " + userGuess + "</p>";
 
+            document.querySelector('#game').innerHTML = html;
         }
-    
+
     </script>
 </body>
 </html>
