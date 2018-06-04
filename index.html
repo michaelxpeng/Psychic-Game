@@ -33,7 +33,10 @@
 
             if (userGuess === computerChoice) {
                 winCounter++;
+                guessCounter = 9;
+
                 console.log(winCounter);
+                console.log(guessCounter);
             }
             
             else if (userGuess !== computerChoice) {
@@ -43,11 +46,10 @@
             if (guessCounter === 0) {
                 lossCounter++;
                 guessCounter = 9;
+
                 console.log(lossCounter);
                 console.log(guessCounter);
-                return;
             }
-            
             
             var html = "<p>Guess what letter I'm thinking of</p>" + 
             "<p>Wins: " + winCounter + "</p>" + 
